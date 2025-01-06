@@ -19,6 +19,7 @@ const miniAdminFields = {
 
 const AdminPage: React.FC = () => {
     const [loading, setLoading] = useState(true);
+    // step 3 set the state with the correct data type
     const [admins, setAdmins] = useState<MiniAdminModel[]>([]);
 
     const fetchData = async (silent = false) => {
@@ -29,11 +30,12 @@ const AdminPage: React.FC = () => {
                 collection: AvailableCollectionNames.ADMIN,
                 selector: {},
                 options: {
+                    // step 4 provide fields
                     fields: miniAdminFields,
                 },
             };
 
-            const res: AdminModel[] = await Meteor.callAsync('utilMethods.findCollection', data);
+            const res: MiniAdminModel[] = await Meteor.callAsync('utilMethods.findCollection', data);
 
             setAdmins(res);
         } catch (error) {

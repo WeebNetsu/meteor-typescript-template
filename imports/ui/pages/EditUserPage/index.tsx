@@ -14,7 +14,6 @@ const EditUserPage: React.FC<EditUserPageProps> = () => {
     const { userId } = useParams();
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState<UserModel | undefined>();
-    // step 3 set the state with the correct data type
 
     const fetchData = async (silent = false) => {
         if (!userId) return;

@@ -62,9 +62,9 @@ export interface AwsSnsResponse {
     detail: {
         Status: AvailableAwsSnsDetailStatuses;
         EventDate: number;
-        ApplicationName: 'mup-meetingpal-uat2';
+        ApplicationName: '';
         Message: string;
-        EnvironmentName: 'mup-env-meetingpal-uat2';
+        EnvironmentName: '';
         Severity: 'WARN';
     };
 }
