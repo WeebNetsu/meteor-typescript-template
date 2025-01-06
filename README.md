@@ -1,6 +1,6 @@
 # Meteor TypeScript Template
 
-For anyone who wants to start a working typescript project with Meteor.js 3 and up
+For anyone who wants to start a working typescript project with Meteor.js 3 and up. This template contains basic routing, authentication and utilities as well as many typings often required my new meteor projects. The template should work with earlier versions of Meteor, but is currently tested on version 3.
 
 ## Content
 
