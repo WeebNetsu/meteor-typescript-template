@@ -9,6 +9,7 @@ For anyone who wants to start a working typescript project with Meteor.js 3 and 
 - [Best Practices](#best-practices)
     - [Users Collection](#users-collection)
     - [Data Fetching](#data-fetching)
+- [Project Dependencies](#project-dependencies)
 - [Helpful Resources](#helpful-resources)
 
 ## Running
