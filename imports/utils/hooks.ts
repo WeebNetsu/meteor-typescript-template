@@ -1,5 +1,5 @@
+/* eslint-disable import/prefer-default-export */
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 
 /**
  * Allows us to get url query parameters. best used with `queryURLBuilder`
@@ -9,7 +9,7 @@ import { useLocation } from 'react-router-dom';
  *  const success = query.get("success");
  * }
  */
-export const useQuery = () => new URLSearchParams(useLocation().search);
+// export const useQuery = () => new URLSearchParams(useLocation().search);
 
 /**
  * Get the browser window inner width and inner height.

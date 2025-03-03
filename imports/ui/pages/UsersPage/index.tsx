@@ -1,10 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'wouter';
 import { protectedRoutes } from '/imports/utils/constants/routes';
 
 const UsersPage: React.FC = () => {
-    const navigate = useNavigate();
+    const [location, navigate] = useLocation();
 
     return (
         <div style={{ width: '100%' }}>

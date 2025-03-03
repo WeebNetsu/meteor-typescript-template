@@ -178,9 +178,10 @@ This will prevent the need from creating any unnecessary trackers and make it si
 I have added a couple extra dependencies to make everything more convenient. I have avoided adding any major UI libraries, since each developer has their preference. I do however recommend [Ant Design](https://ant.design).
 
 - [[INFO]](https://github.com/WeebNetsu/js-utils) `@netsu/js-utils` - These are a couple functions to ease development, developed by me, feel free to remove it, I tried keeping the usage of it to a minimum.
-- [[INFO]](https://www.npmjs.com/package/dayjs) `dayjs` - For working with dates
+- [[INFO]](https://www.npmjs.com/package/dayjs) `dayjs` - For working with dates.
 - [[INFO]](https://www.npmjs.com/package/lodash) `lodash` - For working with arrays, you could opt to use Meteor's built in [underscore](https://v2-docs.meteor.com/packages/underscore) package instead, however I found it to lack TypeScript support in the past.
-- [[INFO]](https://www.npmjs.com/package/react-toastify) `react-toastify` - For sexy popup notifications (such as during a data fetching error)
+- [[INFO]](https://www.npmjs.com/package/react-toastify) `react-toastify` - For sexy popup notifications (such as during a data fetching error).
+- [[INFO]](https://www.npmjs.com/package/wouter) `wouter` - React Router Dom latest versions has [bugs](https://github.com/remix-run/react-router/issues/12381) which keeps us stuck on older versions.
 
 ## Helpful Resources
 

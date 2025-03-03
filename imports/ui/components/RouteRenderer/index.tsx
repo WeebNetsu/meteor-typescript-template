@@ -1,13 +1,13 @@
 /* eslint-disable react/button-has-type */
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'wouter';
 import { ComponentProps } from '/imports/types/interfaces';
 import { protectedRoutes } from '/imports/utils/constants/routes';
 
 interface RouteRendererProps extends ComponentProps {}
 
 const RouteRenderer: React.FC<RouteRendererProps> = ({ children }) => {
-    const navigate = useNavigate();
+    const [location, navigate] = useLocation();
 
     // add your navigation UI
     return (

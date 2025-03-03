@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'wouter';
 import NotFoundPage from '../NotFoundPage';
 import UserProfileModel from '/imports/api/userProfile/models';
 import { AvailableCollectionNames, MethodUtilMethodsFindCollectionModel } from '/imports/api/utils/models';
