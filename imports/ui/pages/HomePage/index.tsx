@@ -1,16 +1,16 @@
 import { Meteor } from 'meteor/meteor';
 import React, { useEffect, useState } from 'react';
 import NotFoundPage from '../NotFoundPage';
-import { UserModel } from '/imports/api/users/models';
+import UserProfileModel from '/imports/api/userProfile/models';
 import { SITE_NAME } from '/imports/utils/constants';
 import { errorResponse } from '/imports/utils/errors';
 
 const HomePage: React.FC = () => {
-    const [user, setUser] = useState<UserModel | undefined>();
+    const [user, setUser] = useState<UserProfileModel | undefined>();
 
     const fetchData = async () => {
         try {
-            const res: UserModel | undefined = await Meteor.callAsync('get.users.current');
+            const res: UserProfileModel | undefined = await Meteor.callAsync('get.userProfiles.current');
 
             setUser(res);
         } catch (error) {
@@ -27,7 +27,7 @@ const HomePage: React.FC = () => {
     return (
         <div>
             <p>
-                Hello {user.profile.firstName}, welcome to {SITE_NAME}
+                Hello {user.firstName}, welcome to {SITE_NAME}
             </p>
 
             <div>

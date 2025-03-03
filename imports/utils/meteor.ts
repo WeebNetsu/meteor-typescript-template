@@ -15,10 +15,6 @@ export const getUserEmail = (user: UserModel | undefined) => {
     return _.first(user?.emails)?.address;
 };
 
-export const getUserFullName = (user: UserModel | undefined) => {
-    return `${user?.profile?.firstName ?? ''} ${user?.profile?.lastName ?? ''}`;
-};
-
 /**
  * This will find a user by their ID, equivalent to
  * `Meteor.users.findOne(userId) as unknown as UserModel | undefined`

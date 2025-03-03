@@ -1,10 +1,9 @@
 import { emailRegex } from '@netsu/js-utils';
 import { Accounts } from 'meteor/accounts-base';
-import { check } from 'meteor/check';
 import { Meteor } from 'meteor/meteor';
-import { MethodSetUserCreateModel, MethodSetUserUpdateProfileModel, UserProfileModel } from '../models';
-import { clientContentError, noAuthError, notFoundError } from '/imports/utils/serverErrors';
-import { currentUserAsync } from '/server/utils/meteor';
+import UserProfileCollection from '../../userProfile/userProfile';
+import { MethodSetUserCreateModel } from '../models';
+import { clientContentError, notFoundError } from '/imports/utils/serverErrors';
 
 Meteor.methods({
     'set.user.create': async function ({ email, password, firstName, lastName }: MethodSetUserCreateModel) {
@@ -23,36 +22,15 @@ Meteor.methods({
             password,
         });
 
+        // ensure the user was created
         const newUser = await Meteor.users.findOneAsync({ 'emails.address': email });
-
         if (!newUser) return notFoundError('new user');
 
-        const profile: UserProfileModel = {
+        // create the users profile
+        await UserProfileCollection.insertAsync({
+            userId: newUser._id,
             firstName,
             lastName,
-        };
-
-        await Meteor.users.updateAsync(newUser._id, {
-            $set: {
-                profile,
-            },
-        });
-    },
-    'set.user.updateProfile': async function ({ userId, update }: MethodSetUserUpdateProfileModel) {
-        check(userId, String);
-
-        const currentUser = await currentUserAsync();
-
-        if (!currentUser) return noAuthError();
-
-        const updateUser = await Meteor.users.findOneAsync(userId);
-
-        if (!updateUser) return notFoundError('user');
-
-        await Meteor.users.updateAsync(userId, {
-            $set: {
-                profile: update,
-            },
         });
     },
 });

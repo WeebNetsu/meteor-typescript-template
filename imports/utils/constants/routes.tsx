@@ -1,5 +1,4 @@
 import React from 'react';
-import AdminPage from '../../ui/pages/AdminPage';
 import EditUserPage from '/imports/ui/pages/EditUserPage';
 import HomePage from '/imports/ui/pages/HomePage';
 import LoginPage from '/imports/ui/pages/LoginPage';
@@ -44,8 +43,8 @@ export const protectedRoutes = {
         path: '/users/:userId',
         element: (<EditUserPage />) as React.ReactNode,
     },
-    admin: {
-        path: '/admin',
-        element: (<AdminPage />) as React.ReactNode,
-    },
+    // admin: {
+    //     path: '/admin',
+    //     element: (<AdminPage />) as React.ReactNode,
+    // },
 };

@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { protectedRoutes } from '/imports/utils/constants/routes';
@@ -13,7 +14,7 @@ const UsersPage: React.FC = () => {
                 Edit user example:{' '}
                 <button
                     onClick={() => {
-                        navigate(protectedRoutes.editUser.path.replace(':userId', 'youruserid'));
+                        navigate(protectedRoutes.editUser.path.replace(':userId', Meteor.userId()));
                     }}
                     type="button"
                 >

@@ -1,17 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { Meteor } from 'meteor/meteor';
 
-export interface UserProfileModel {
-    /**
-     * The first name of the user
-     */
-    firstName: string;
-    /**
-     * The last name of the user
-     */
-    lastName?: string;
-}
-
 export class UserModel implements Meteor.User {
     _id!: string;
 
@@ -23,7 +12,10 @@ export class UserModel implements Meteor.User {
 
     deleted?: boolean;
 
-    profile!: UserProfileModel;
+    /**
+     * This will be the profile ID for this user
+     */
+    profile!: string;
 
     services?: {
         password: string;
@@ -38,9 +30,4 @@ export interface MethodSetUserCreateModel {
     password: string;
     firstName: string;
     lastName: string | undefined;
-}
-
-export interface MethodSetUserUpdateProfileModel {
-    update: Partial<UserProfileModel>;
-    userId: string;
 }

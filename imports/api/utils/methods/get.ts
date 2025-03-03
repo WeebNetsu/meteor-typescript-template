@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
-import AdminCollection from '../../admin/admin';
-import AdminModel from '../../admin/models';
+import UserProfileModel from '../../userProfile/models';
+import UserProfileCollection from '../../userProfile/userProfile';
 import { AvailableCollectionNames, MethodUtilMethodsFindCollectionModel } from '../models';
 import { MongoDBSelector } from '/imports/types/interfaces';
 import { internalServerError } from '/imports/utils/serverErrors';
@@ -15,7 +15,7 @@ Meteor.methods({
         includeDeleted = false,
     }: MethodUtilMethodsFindCollectionModel) {
         const collectionMap = {
-            [AvailableCollectionNames.ADMIN]: AdminCollection,
+            [AvailableCollectionNames.USER_PROFILE]: UserProfileCollection,
             [AvailableCollectionNames.USERS]: Meteor.users,
         };
 
@@ -62,9 +62,9 @@ Meteor.methods({
         }
 
         if (onlyOne) {
-            // we specify it as AdminModel because TypeScript is just being a big baby an doesn't
+            // we specify it as UserProfileModel because TypeScript is just being a big baby an doesn't
             // like to mix user model with the common folk
-            const res = await (collectionInstance as Mongo.Collection<AdminModel, AdminModel>).findOneAsync(
+            const res = await (collectionInstance as Mongo.Collection<UserProfileModel, UserProfileModel>).findOneAsync(
                 includeDeleted ? selector : query,
                 {
                     ...options,

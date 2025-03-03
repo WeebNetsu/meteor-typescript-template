@@ -13,7 +13,7 @@ const RouteRenderer: React.FC<RouteRendererProps> = ({ children }) => {
     return (
         <>
             <button onClick={() => navigate(protectedRoutes.users.path)}>Users</button>
-            <button onClick={() => navigate(protectedRoutes.admin.path)}>Admin</button>
+            {/* <button onClick={() => navigate(protectedRoutes.admin.path)}>Admin</button> */}
 
             {/* render route data */}
             {children}
