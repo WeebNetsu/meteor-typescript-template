@@ -13,6 +13,7 @@ Meteor.methods({
         selector = {},
         options = {},
         includeDeleted = false,
+        count = false,
     }: MethodUtilMethodsFindCollectionModel) {
         const collectionMap = {
             [AvailableCollectionNames.USER_PROFILE]: UserProfileCollection,
@@ -72,6 +73,11 @@ Meteor.methods({
                 },
             );
 
+            return res;
+        }
+
+        if (count) {
+            const res = await collectionInstance.find(includeDeleted ? selector : query, options).countAsync();
             return res;
         }
 
