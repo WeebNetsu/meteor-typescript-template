@@ -1,9 +1,16 @@
+import UserProfileModel from '../userProfile/models';
+import { UserModel } from '../users/models';
 import { MethodSearchModel } from '/imports/types/interfaces';
 
 export enum AvailableCollectionNames {
     USERS = 'users',
     USER_PROFILE = 'user_profile',
 }
+
+export type CollectionTypeMap = {
+    [AvailableCollectionNames.USERS]: UserModel;
+    [AvailableCollectionNames.USER_PROFILE]: UserProfileModel;
+};
 
 export interface MethodUtilMethodsFindCollectionModel extends MethodSearchModel {
     collection: AvailableCollectionNames;

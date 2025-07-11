@@ -110,7 +110,11 @@ const EditUserPage: React.FC<EditUserPageProps> = () => {
         if (!userId) return;
 
         try {
-            const data: MethodUtilMethodsFindCollectionModel = {
+            // if fetching the full collection, then getDBData will correctly infer
+            // the interface on its own
+            // the request is made here, if you did not specify onlyOne, then this will return
+            // MiniHomePageUserProfileModel[] instead of MiniHomePageUserProfileModel | undefined
+            const res: MiniHomePageUserProfileModel | undefined = await getDBData({
                 // specify the collection you'll be searching in
                 collection: AvailableCollectionNames.USER_PROFILE,
                 // this is the same as any mongodb selector in meteor, go nuts
@@ -121,15 +125,7 @@ const EditUserPage: React.FC<EditUserPageProps> = () => {
                     // here we specify what fields should be returned
                     fields: miniHomePageUserProfileFields,
                 },
-            };
-
-            // the request is made here, if you did not specify onlyOne, then this will return
-            // MiniHomePageUserProfileModel[] instead of MiniHomePageUserProfileModel | undefined
-            const res: MiniHomePageUserProfileModel | undefined = await Meteor.callAsync(
-                'utilMethods.findCollection',
-                // remember to pass in your data
-                data,
-            );
+            });
 
             // save the data in a state
             setUser(res);

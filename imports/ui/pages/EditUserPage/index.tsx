@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'wouter';
 import NotFoundPage from '../NotFoundPage';
 import UserProfileModel from '/imports/api/userProfile/models';
-import { AvailableCollectionNames, MethodUtilMethodsFindCollectionModel } from '/imports/api/utils/models';
+import { AvailableCollectionNames } from '/imports/api/utils/models';
 import { ComponentProps } from '/imports/types/interfaces';
 import { errorResponse } from '/imports/utils/errors';
+import { getDBData } from '/imports/utils/meteor';
 
 export interface EditUserPageProps extends ComponentProps {}
 
@@ -26,19 +27,31 @@ const EditUserPage: React.FC<EditUserPageProps> = () => {
         if (!userId) return;
 
         try {
-            const data: MethodUtilMethodsFindCollectionModel = {
+            // if fetching the full collection, then getDBData will correctly infer
+            // the interface on its own
+            const res: MiniHomePageUserProfileModel | undefined = await getDBData({
                 collection: AvailableCollectionNames.USER_PROFILE,
                 selector: { userId },
                 onlyOne: true,
                 options: {
                     fields: miniHomePageUserProfileFields,
                 },
-            };
+            });
 
-            const res: MiniHomePageUserProfileModel | undefined = await Meteor.callAsync(
-                'utilMethods.findCollection',
-                data,
-            );
+            // or if you'd prefer the old method of fetching data
+            // const data: MethodUtilMethodsFindCollectionModel = {
+            //     collection: AvailableCollectionNames.USER_PROFILE,
+            //     selector: { userId },
+            //     onlyOne: true,
+            //     options: {
+            //         fields: miniHomePageUserProfileFields,
+            //     },
+            // };
+
+            // const res: MiniHomePageUserProfileModel | undefined = await Meteor.callAsync(
+            //     'utilMethods.findCollection',
+            //     data,
+            // );
 
             setUser(res);
         } catch (error) {
