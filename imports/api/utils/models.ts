@@ -7,6 +7,7 @@ export enum AvailableCollectionNames {
     USER_PROFILE = 'user_profile',
 }
 
+// this is so we can associate data types with a specific collection on fetch
 export type CollectionTypeMap = {
     [AvailableCollectionNames.USERS]: UserModel;
     [AvailableCollectionNames.USER_PROFILE]: UserProfileModel;
