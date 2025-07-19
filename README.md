@@ -97,7 +97,8 @@ const miniHomePageUserProfileFields = {
 };
 
 const EditUserPage: React.FC<EditUserPageProps> = () => {
-    const { userId } = useParams();
+    const { userId } = useParams(); // or use the user context for the currently logged in user id
+    // const { userId } = useUserContext(); // <--- Like this
     const [loading, setLoading] = useState(true);
     // specify the state and how it will look by specifying the model representing it
     const [user, setUser] = useState<MiniHomePageUserProfileModel | undefined>();
